@@ -1,6 +1,9 @@
-leihs_legacy_dir: /leihs/legacy
-leihs_legacy_clean_slate: false
+# Minimal defaults for independent role execution
+# When used in playbook, values from main defaults will override these
+LEIHS_ROOT_DIR: "/leihs"
 leihs_legacy_user: leihs-legacy
+leihs_legacy_dir: "{{LEIHS_ROOT_DIR}}/legacy"
+leihs_legacy_clean_slate: false
 leihs_legacy_max_threads_per_worker: 5
 leihs_legacy_workers: "{{ansible_processor_vcpus}}"
 leihs_legacy_ruby_dir: "/home/{{leihs_legacy_user}}/.asdf/installs/ruby/{{leihs_legacy_ruby_version.stdout}}"

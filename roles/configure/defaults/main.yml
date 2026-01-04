@@ -1,0 +1,11 @@
+# Minimal defaults for independent role execution
+# When used in playbook, values from main defaults will override these
+database:
+  host: localhost
+  port: 5415
+  username: root
+  password: root
+  database: leihs
+
+api_basic_auth_enabled: true
+

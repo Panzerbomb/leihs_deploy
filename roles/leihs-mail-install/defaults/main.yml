@@ -1,2 +1,5 @@
+# Minimal defaults for independent role execution
+# When used in playbook, values from main defaults will override these
+LEIHS_ROOT_DIR: "/leihs"
 leihs_mail_user: 'leihs-mail'
-leihs_mail_dir: /leihs/mail
+leihs_mail_dir: "{{LEIHS_ROOT_DIR}}/mail"

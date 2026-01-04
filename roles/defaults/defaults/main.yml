@@ -52,6 +52,8 @@ db_backup_dir: "{{LEIHS_ROOT_DIR}}/var/db-backups"
 db_backup_nightly_enabled: No
 db_backup_keep_days: 10
 db_backup_on_deploy: No
+# custom settings included at end of service (e.g. to notify monitoring with ExecStart)
+db_backup_service_custom_extend: False
 
 ### database service configuration #############################################
 
@@ -64,8 +66,14 @@ leihs_database_ruby_dir: "/home/{{leihs_database_user}}/.asdf/installs/ruby/{{le
 
 ### legacy service configuration ###############################################
 
-# see defaults in role
+leihs_legacy_user: leihs-legacy
+leihs_legacy_dir: "{{LEIHS_ROOT_DIR}}/legacy"
 leihs_legacy_clean_slate: false
+leihs_legacy_max_threads_per_worker: 5
+leihs_legacy_workers: "{{ansible_processor_vcpus}}"
+leihs_legacy_ruby_dir: "/home/{{leihs_legacy_user}}/.asdf/installs/ruby/{{leihs_legacy_ruby_version.stdout}}"
+leihs_legacy_puma_worker_killer_enabled: no
+leihs_legacy_puma_worker_killer_ram: '{{ (ansible_memtotal_mb / 4) | int }}'
 
 
 ### micro services configuration ###############################################
@@ -78,8 +86,25 @@ LEIHS_MY_HTTP_PORT: "3240"
 LEIHS_BORROW_HTTP_PORT: "3250"
 LEIHS_INVENTORY_HTTP_PORT: "3260"
 
+# Mail Service
+leihs_mail_user: 'leihs-mail'
+leihs_mail_dir: "{{LEIHS_ROOT_DIR}}/mail"
+
+# My Service
+leihs_my_user: 'leihs-my'
+leihs_my_dir: "{{LEIHS_ROOT_DIR}}/my"
+
+# Admin Service
+leihs_admin_user: 'leihs-admin'
+leihs_admin_dir: "{{LEIHS_ROOT_DIR}}/admin"
+
+# Borrow Service
 leihs_borrow_user: "leihs-borrow"
 leihs_borrow_dir: "{{LEIHS_ROOT_DIR}}/borrow"
+
+# Procure Service
+leihs_procure_user: 'leihs-procure'
+leihs_procure_dir: "{{LEIHS_ROOT_DIR}}/procure"
 
 ################################################################################
 
@@ -115,4 +140,25 @@ maintenance_page_status_page_url: Null # e.g.: https://ci.example.org/jobs/cf378
 webstats_enabled: true
 webstats_passwords_remove: [] # list of usernames to be removed
 webstats_passwords_set : {} # add unsername => password; note that unset passwords will not be removed automatically
+
+
+### os & system configuration ##################################################
+
+ci_vim_mode: false
+server_timezone: Etc/UTC
+# reset Debian default and restore Systemd default: prevent system crashes by
+# overflowing disks due to excessive logging
+journald_forward_to_syslog: 'no'
+ntp_setup: no
+ntp_server: pool.ntp.org
+ssh_keys_present: []
+ssh_keys_absent: []
+
+
+### asdf version manager #######################################################
+
+asdf_version: 0.14.1
+asdf_root_dir: /home/{{asdf_user}}/.asdf
+asdf_dir: "{{asdf_root_dir}}/asdf-{{asdf_version}}"
+
 
