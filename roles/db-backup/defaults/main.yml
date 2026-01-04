@@ -1,3 +1,7 @@
-# replace the fowllowing line with some custom settings which will be included at the end 
+# Minimal defaults for independent role execution
+# When used in playbook, values from main defaults will override these
+LEIHS_ROOT_DIR: "/leihs"
+db_backup_dir: "{{LEIHS_ROOT_DIR}}/var/db-backups"
+# replace the following line with some custom settings which will be included at the end
 # a likely usecase is to notify a monitoring system with an additional `ExecStart` command
 db_backup_service_custom_extend: False

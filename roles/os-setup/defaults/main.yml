@@ -1,3 +1,5 @@
+# Minimal defaults for independent role execution
+# When used in playbook, values from main defaults will override these
 ci_vim_mode: false
 
 server_timezone: Etc/UTC
