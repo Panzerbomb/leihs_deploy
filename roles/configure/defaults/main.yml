@@ -6,6 +6,7 @@ database:
   username: root
   password: root
   database: leihs
+LEIHS_ROOT_DIR: /leihs
 
 api_basic_auth_enabled: true
 
