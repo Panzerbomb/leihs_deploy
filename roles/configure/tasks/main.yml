@@ -1,5 +1,5 @@
 - file:
-    path: /leihs/config
+    path: "{{LEIHS_ROOT_DIR}}/config"
     state: directory
     recurse: true
     owner: root
