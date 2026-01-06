@@ -13,6 +13,7 @@
     mode: 0755
     owner: root
 
+# TODO: Check hardcoded path /etc/leihs/config.env
 - name: set env config
   template:
     src: config.env

@@ -9,6 +9,7 @@ leihs_run_nightly_tasks_on: "*-*-* 04:00:00"
 leihs_run_nightly_tasks_randomized_delay_max_seconds: 3600
 leihs_send_mails: No
 
+# TODO: Check hardcoded path /leihs
 LEIHS_ROOT_DIR: "/leihs"
 
 ### reverse proxy configuration ###############################################

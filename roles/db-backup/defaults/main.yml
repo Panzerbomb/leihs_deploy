@@ -1,5 +1,6 @@
 # Minimal defaults for independent role execution
 # When used in playbook, values from main defaults will override these
+# TODO: Check hardcoded path /leihs
 LEIHS_ROOT_DIR: "/leihs"
 db_backup_dir: "{{LEIHS_ROOT_DIR}}/var/db-backups"
 # replace the following line with some custom settings which will be included at the end

@@ -25,6 +25,7 @@
       --no-owner --format c 
       --data-only -T schema_migrations -T ar_internal_metadata 
       --dbname leihs
+# TODO: Check hardcoded filename /tmp/leihs_pg10_data.pgbin
       --file /tmp/leihs_pg10_data.pgbin
   async: 3600
   poll: 1

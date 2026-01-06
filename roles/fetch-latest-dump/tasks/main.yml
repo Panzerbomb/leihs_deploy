@@ -1,3 +1,4 @@
+# TODO: Check hardcoded path /leihs/var/db-backups/latest.pgbin
 - fetch:
     src: /leihs/var/db-backups/latest.pgbin
     dest: "{{playbook_dir}}/../tmp/{{inventory_hostname}}_{{ansible_date_time.date}}_dump.pgbin"
