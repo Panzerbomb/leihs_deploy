@@ -4,6 +4,7 @@
 
 - template:
     src: http.conf
+# TODO: Check hardcoded path /etc/apache2/leihs/
     dest: /etc/apache2/leihs/{{index}}_http.conf
     mode: 0644
 

@@ -23,7 +23,7 @@
     lc_ctype: de_CH.UTF-8
     state: present
     template: template0
-    login_user: root
+    login_user: "{{database.username}}"
 
 - name: create and seed database if it does not exist
   when: '"already exists" not in check_existing_database.stdout'

@@ -1,3 +1,4 @@
 ansible_host: test.leihs.zhdk.ch
 ansible_user: leihs
+# TODO: Check hardcoded path /home/leihs/test/current
 leihs_v3_root_dir: /home/leihs/test/current

@@ -6,6 +6,7 @@ BindsTo=leihs-migration.service
 [Service]
 SyslogIdentifier=leihs-legacy-cron
 Type=oneshot
+# TODO: Check hardcoded path /leihs/legacy
 WorkingDirectory=/leihs/legacy
 User={{leihs_legacy_user}}
 Group={{leihs_legacy_user}}

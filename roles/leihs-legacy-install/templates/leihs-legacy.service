@@ -12,6 +12,7 @@ StartLimitBurst=6
 
 [Service]
 SyslogIdentifier=leihs-legacy
+# TODO: Check hardcoded path /leihs/legacy
 WorkingDirectory=/leihs/legacy
 User={{leihs_legacy_user}}
 Group={{leihs_legacy_user}}

@@ -9,6 +9,7 @@
 
 - name: maintenance page directory
   file:
+# TODO: Check hardcoded path /var/www/leihs-maintenance
     path: /var/www/leihs-maintenance
     state: directory
     mode: 0755

@@ -52,6 +52,7 @@
 - name: configure webstats in the reverse proxy if enabled
   template:
     src: webstats.conf
+# TODO: Check hardcoded path /etc/apache2/leihs/conf.d/
     dest: /etc/apache2/leihs/conf.d/leihs_100_webstats.conf
     mode: 0644
   when: webstats_enabled
@@ -62,6 +63,7 @@
     state: absent
   when: not webstats_enabled
 
+# TODO: Check hardcoded path /etc/leihs/webstats.htpasswd
 - name: remove unwanted passwords
   htpasswd:
     path: /etc/leihs/webstats.htpasswd

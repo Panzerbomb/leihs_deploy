@@ -8,6 +8,7 @@
   include_tasks: log_permissions.yml
 
 - file:
+# TODO: Check hardcoded path /etc/apache2/leihs/conf.d
     path: /etc/apache2/leihs/conf.d
     state: directory
     mode: 0755

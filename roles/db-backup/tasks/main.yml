@@ -17,6 +17,7 @@
 
 - template:
     src: leihs-db-backup.timer
+# TODO: Check hardcoded service name leihs-db-backup
     dest: /etc/systemd/system/leihs-db-backup.timer
     mode: 0644
   name: install leihs-db-backup.timer
