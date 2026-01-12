@@ -9,5 +9,5 @@
 
 - include_tasks: install.yml
 
-- include_tasks: root_user.yml
+- include_tasks: main_user.yml
 

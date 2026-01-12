@@ -1,0 +1,17 @@
+- name: add {{database.username}} postgresql user
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    name: {{database.username}}
+    port: 5415
+    role_attr_flags: CREATEDB,SUPERUSER
+    password: {{database.password}}
+    encrypted: true
+  tags: debug
+
+- postgresql_db:
+    name: {{database.database}}
+    login_user: {{database.username}}
+    port: 5415
+    owner: {{database.username}}
+  name: Create the a database for {{database.username}}
