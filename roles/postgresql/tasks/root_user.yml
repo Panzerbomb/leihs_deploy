@@ -3,7 +3,7 @@
   become_user: postgres
   postgresql_user:
     name: root
-    login_port: 5415
+    login_port: "{{database_port}}"
     role_attr_flags: CREATEDB,SUPERUSER
     password: "{{database_password}}"
   tags: debug
@@ -11,6 +11,6 @@
 - postgresql_db:
     name: root
     login_user: root
-    login_port: 5415
+    login_port: "{{database_port}}"
     owner: root
   name: Create the a database for root
