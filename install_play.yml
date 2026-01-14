@@ -33,6 +33,4 @@
     - role: leihs-procure-install
       tags: [leihs-procure-install]
 
-    - role: webstats
-      tags: [webstats]
 
