@@ -2,7 +2,7 @@
   changed_when: false
   register: check_existing_database
   shell: |
-    psql --port 5415 -AXtq -c \
+    PGPASSWORD='{{database.password}}' psql --port '{{database.port}}' --dbname '{{database.database}}' --username '{{database.username}}' -AXtq -c \
       "SELECT 'already exists' FROM pg_database WHERE datname = '{{database.database}}';"
 
 - name: copy structure and seeds to remote
@@ -18,12 +18,13 @@
   when: '"already exists" not in check_existing_database.stdout'
   postgresql_db:
     name: "{{database.database}}"
-    port: 5415
+    port: "{{database.port}}"
     lc_collate: de_CH.UTF-8
     lc_ctype: de_CH.UTF-8
     state: present
     template: template0
     login_user: "{{database.username}}"
+    login_password: "{{database.password}}"
 
 - name: create and seed database if it does not exist
   when: '"already exists" not in check_existing_database.stdout'
@@ -31,10 +32,10 @@
     #!/usr/bin/env bash
     set -euo pipefail
     /usr/lib/postgresql/{{postgres_version}}/bin/psql \
-      -d '{{database.database}}' --port 5415 \
+      -d '{{database.database}}' --port "{{database.port}}" \
       -f '/tmp/structure.sql'
     /usr/lib/postgresql/{{postgres_version}}/bin/psql \
-      -d '{{database.database}}' --port 5415 \
+      -d '{{database.database}}' --port "{{database.port}}" \
       -c 'SET session_replication_role = REPLICA;' \
       -f '/tmp/seeds.sql' \
       -c 'SET session_replication_role = DEFAULT;'
