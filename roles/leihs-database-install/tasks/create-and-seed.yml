@@ -4,6 +4,8 @@
   shell: |
     PGPASSWORD='{{database_password}}' psql --port '{{database_port}}' --dbname '{{database_database}}' --username '{{database_username}}' -AXtq -c \
       "SELECT 'already exists' FROM pg_database WHERE datname = '{{database_database}}';"
+  become: True
+  become_user: "{{database_username}}"
 
 - name: copy structure and seeds to remote
   when: '"already exists" not in check_existing_database.stdout'
