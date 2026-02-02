@@ -27,21 +27,20 @@
     template: template0
     login_user: "{{database_username}}"
     login_password: "{{database_password}}"
-
+  become: True
+  become_user: "{{database.username}}"
 - name: create and seed database if it does not exist
   when: '"already exists" not in check_existing_database.stdout'
   shell: |
-    #!/usr/bin/env bash
     set -euo pipefail
-    /usr/lib/postgresql/{{postgres_version}}/bin/psql \
-      -d '{{database_name}}' --port "{{database_port}}" \
+    PGPASSWORD={{database_password}} psql --port {{database_port}} --dbname {{database_database}} --username {{database_username}} \
       -f '/tmp/structure.sql'
-    /usr/lib/postgresql/{{postgres_version}}/bin/psql \
-      -d '{{database_name}}' --port "{{database_port}}" \
+    PGPASSWORD={{database_password}} psql --port {{database_port}} --dbname {{database_database}} --username {{database_username}} \
       -c 'SET session_replication_role = REPLICA;' \
       -f '/tmp/seeds.sql' \
       -c 'SET session_replication_role = DEFAULT;'
-
+  become: True
+  become_user: "{{database.username}}"
   args:
     executable: /bin/bash
 

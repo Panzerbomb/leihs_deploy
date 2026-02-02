@@ -1,5 +1,0 @@
-# set default PostgreSQL version to {{postgres_version}} for all users.
-# see Debian's `pg_wrapper` for details.
-#
-# USER  GROUP   VERSION CLUSTER DATABASE
-*       *       {{postgres_version}}      main    *
