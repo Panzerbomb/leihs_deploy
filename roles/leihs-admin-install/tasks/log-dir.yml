@@ -1,4 +1,4 @@
-- file:
+F- file:
     path: '{{leihs_admin_dir}}/logs'
     state: directory
     owner: '{{leihs_admin_user}}'

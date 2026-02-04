@@ -18,12 +18,12 @@
     executable: /bin/bash
 
 - file:
-    path: /leihs/legacy
+    path: "{{leihs_legacy_dir}}"
     state: absent
   name: remove existing /leihs/legacy
 
 - file:
-    path: /leihs/legacy
+    path: "{{leihs_legacy_dir}}"
     state: directory
     owner: "{{leihs_legacy_user}}"
     recurse: yes
