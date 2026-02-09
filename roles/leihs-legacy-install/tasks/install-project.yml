@@ -34,7 +34,7 @@
     state: absent
   name: remove existing archive
 
-# TODO: Check hardcoded path /leihs/legacy
+
 - unarchive:
     src: "{{playbook_dir}}/tmp/legacy.tar.gz"
     dest: "{{leihs_legacy_dir}}"

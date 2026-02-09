@@ -9,7 +9,7 @@
     src: leihs-legacy.service
     dest: /etc/systemd/system/leihs-legacy.service
     mode: 0644
-  name: copy  leihs-legacy.service
+  name: copy leihs-legacy.service
 
 - template:
     src: leihs-legacy-cron.service
