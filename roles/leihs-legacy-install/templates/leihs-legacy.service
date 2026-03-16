@@ -14,8 +14,8 @@ StartLimitBurst=6
 SyslogIdentifier=leihs-legacy
 # TODO: Check hardcoded path /leihs/legacy
 WorkingDirectory={{leihs_legacy_dir}}
-User={{leihs_legacy_user}}
-Group={{leihs_legacy_user}}
+User={{leihs_asdf_user}}
+Group={{leihs_asdf_user}}
 
 Restart=on-failure
 Restart=always

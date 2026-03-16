@@ -140,7 +140,8 @@ maintenance_page_status_page_url: Null # e.g.: https://ci.example.org/jobs/cf378
 ### asdf version manager #######################################################
 
 asdf_version: 0.14.1
-asdf_root_dir: /home/{{asdf_user}}/.asdf
-asdf_dir: "{{asdf_root_dir}}/asdf-{{asdf_version}}"
+leihs_asdf_user: root
+#asdf_root_dir: /home/{{asdf_user}}/.asdf
+#asdf_dir: "{{asdf_root_dir}}/asdf-{{asdf_version}}"
 
 

@@ -2,7 +2,7 @@
 
 - include_tasks: project.yml
 
-- include_tasks: ruby.yml
+#- include_tasks: ruby.yml
 
 - include_tasks: database.yml
 
