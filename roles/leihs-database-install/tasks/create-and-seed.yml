@@ -40,7 +40,7 @@
       -f '/tmp/seeds.sql' \
       -c 'SET session_replication_role = DEFAULT;'
   become: True
-  become_user: "{{database.username}}"
+  become_user: "{{database_username}}"
   args:
     executable: /bin/bash
 
