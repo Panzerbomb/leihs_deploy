@@ -40,7 +40,7 @@
 
     - name: Remove vendor/bundle for leihs-legacy
       file:
-        path: /leihs/legacy/vendor/bundle
+        path: "{{LEIHS_ROOT_DIR}}/legacy/vendor/bundle"
         state: absent
 
     - name: Remove mise-installed ruby for leihs-database user
@@ -50,7 +50,7 @@
 
     - name: Remove vendor/bundle for leihs-database
       file:
-        path: /leihs/database/vendor/bundle
+        path: "{{LEIHS_ROOT_DIR}}/database/vendor/bundle"
         state: absent
 
 - name: Fully update bookworm before switching to trixie
@@ -188,7 +188,7 @@
       lineinfile:
         dest: /etc/postgresql/16/main/postgresql.conf
         regexp: ^port =
-        line: port = 5415
+        line: port = {{database_port}}
 
     - name: Restart postgresql@16-main
       service:
