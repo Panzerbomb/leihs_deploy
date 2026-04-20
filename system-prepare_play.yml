@@ -16,12 +16,6 @@
     - role: defaults
       tags: [always]
 
-    - role: os-check
-      tags: [os-check]
-
-    - role: os-setup
-      tags: [os-setup]
-
     - role: openjdk
       tags: [openjdk]
 
