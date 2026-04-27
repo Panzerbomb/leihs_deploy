@@ -1,10 +1,12 @@
 - set_fact:
     index: '{{item.0}}'
     virtual_host: '{{item.1}}'
+- name: debug index and virtual_host
+  debug:
+    msg: "index: {{ index }}, virtual_host: {{ virtual_host }}"
 
 - template:
     src: http.conf
-# TODO: Check hardcoded path /etc/apache2/leihs-maintenance/
     dest: /etc/apache2/leihs-maintenance/{{index}}_http.conf
     mode: 0644
 
