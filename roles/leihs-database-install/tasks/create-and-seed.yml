@@ -2,8 +2,8 @@
   changed_when: false
   register: check_existing_database
   shell: |
-    PGPASSWORD='{{database_password}}' psql --port '{{database_port}}' --dbname '{{database_database}}' --username '{{database_username}}' -AXtq -c \
-      "SELECT 'already exists' FROM pg_database WHERE datname = '{{database_database}}';"
+    PGPASSWORD='{{database_password}}' psql --port '{{database_port}}' --dbname '{{database_name}}' --username '{{database_username}}' -AXtq -c \
+      "SELECT 'already exists' FROM pg_database WHERE datname = '{{database_name}}';"
   become: True
   become_user: "{{database_username}}"
 
@@ -33,9 +33,9 @@
   when: '"already exists" not in check_existing_database.stdout'
   shell: |
     set -euo pipefail
-    PGPASSWORD={{database_password}} psql --port {{database_port}} --dbname {{database_database}} --username {{database_username}} \
+    PGPASSWORD={{database_password}} psql --port {{database_port}} --dbname {{database_name}} --username {{database_username}} \
       -f '/tmp/structure.sql'
-    PGPASSWORD={{database_password}} psql --port {{database_port}} --dbname {{database_database}} --username {{database_username}} \
+    PGPASSWORD={{database_password}} psql --port {{database_port}} --dbname {{database_name}} --username {{database_username}} \
       -c 'SET session_replication_role = REPLICA;' \
       -f '/tmp/seeds.sql' \
       -c 'SET session_replication_role = DEFAULT;'
