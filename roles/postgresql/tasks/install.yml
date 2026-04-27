@@ -1,0 +1,30 @@
+- name: install PG15
+  apt:
+    pkg:
+      - postgresql-15
+      - postgresql-client-15
+      - python3-psycopg2
+      - libpq-dev
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  async: 300
+  poll: 1
+
+- name: configure default port
+  lineinfile:
+    dest: /etc/postgresql/{{postgres_version}}/main/postgresql.conf
+    regex: ^port =
+    line: port = 5415
+  register: pg_port
+
+- name: restart pg_server
+  service:
+    name: postgresql@{{postgres_version}}-main
+    state: restarted
+  when: pg_port.changed
+
+- name: configure default postgresql version
+  template:
+    dest: /etc/postgresql-common/user_clusters
+    src: etc__postgresql-common__user_clusters
